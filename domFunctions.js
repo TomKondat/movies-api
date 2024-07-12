@@ -1,41 +1,21 @@
-const content = document.getElementById("content");
-
 const createSingleMovieCard = (filmObj) => {
   const filmCardEl = document.createElement("div");
   filmCardEl.className = "single-film-card";
+
+  // Create the button
+  const button2 = document.createElement("button");
+  button2.textContent = "Open Modal";
+  button2.className = "open-modal-button";
+  console.log(filmObj);
   filmCardEl.innerHTML = `
+  
   <div class="card">
   <img src="${filmObj.Poster}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">${filmObj.Title}</h5>
     <p class="card-text">Year:${filmObj.Year}</p>
-    <a href="#" class="btn btn-primary">Go Movie Page</a>
-  </div>
-  </div>
- </div>
-    `;
-  // Create the button
-  const button = document.createElement("button");
-  button.textContent = "Open Modal";
-  button.className = "open-modal-button";
 
-  // Add event listener to the button
-  button.addEventListener("click", () => {
-    createModalForMovie(filmObj);
-  });
-
-  // Append the button to the film card
-  filmCardEl.appendChild(button);
-
-  return filmCardEl;
-};
-
-export { createSingleMovieCard };
-
-const createModalForMovie = () => {
-  const modal = document.createElement("div");
-  modal.className = "modal";
-  modal.innerHTML = `
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Launch demo modal
 </button>
@@ -49,7 +29,7 @@ const createModalForMovie = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+      ${filmObj.Title}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -58,8 +38,13 @@ const createModalForMovie = () => {
     </div>
   </div>
 </div>
-  `;
-  return modal;
+
+  </div>
+  </div>
+ </div>
+    `;
+  console.log(filmObj);
+  return filmCardEl;
 };
 
-export { createModalForMovie };
+export { createSingleMovieCard };
